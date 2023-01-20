@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Test Fragment" enabled="false"/>
+      <hashTree>
+        <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Test Fragment" enabled="false"/>
+        <hashTree>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="date_yy" elementType="Argument">
+                <stringProp name="Argument.name">date_yy</stringProp>
+                <stringProp name="Argument.value">${__timeShift(yy,,+P730D,)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="date_mm" elementType="Argument">
+                <stringProp name="Argument.name">date_mm</stringProp>
+                <stringProp name="Argument.value">${__timeShift(MM,,+P730D,)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="iter" elementType="Argument">
+                <stringProp name="Argument.name">iter</stringProp>
+                <stringProp name="Argument.value">${__Random(1000,9999)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="vuId" elementType="Argument">
+                <stringProp name="Argument.name">vuId</stringProp>
+                <stringProp name="Argument.value">${__Random(1000,9999)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Ctn_924 Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="filename">${PathData}ctn_beepins_924.dat</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">Ctn_924</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="filename">${PathData}BankRange.dat</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">BankRangeMin,BankRangeMax</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="filename">${PathData}StopList.dat</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">stopListMin,stopListMax</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="filename">${PathData}loadtest.dat</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.group</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">N, dataPAN</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="WidgetCardPay_root" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8020</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path"></stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="false">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">ru-RU</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">ContentType</stringProp>
+                  <stringProp name="Header.value">text/xml; charset=utf-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+              <stringProp name="TestPlan.comments">что бы в респонс кодировка была utf-8</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="script">prev.setDataEncoding(&quot;UTF-8&quot;);</stringProp>
+            </BeanShellPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="WidgetCardPay_payment" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;paymentPointId&quot;:&quot;something|somewhere&quot;,&quot;receiptPhone&quot;:&quot;${Ctn_924}&quot;,&quot;payments&quot;:[{&quot;accountNumber&quot;:&quot;${Ctn_924}&quot;,&quot;sum&quot;:100}],&quot;creditCard&quot;:{&quot;cardNumber&quot;:&quot;${dataPAN}&quot;,&quot;cardCode&quot;:&quot;111&quot;,&quot;cardHolder&quot;:&quot; NO NAME&quot;,&quot;cardMonth&quot;:${date_mm},&quot;cardYear&quot;:${date_yy}}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">4243</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/payment</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters">${BankRangeMin} ${BankRangeMax} ${stopListMin} ${stopListMax} ${iter} ${vuId}</stringProp>
+              <stringProp name="script">
+	int bankBin
+	int inListStop = 1
+	int rand1
+	int rand2
+	int checkSumm = 0
+	int currSymbol = 0
+	def pan
+	String s
+	int bankMax
+	int bankMin
+	int stopMax
+	int stopMin
+		/*log.info(&quot;First parameter: &quot; + args[0]);
+		log.info(&quot;Second parameter: &quot; + args[1]);
+		log.info(&quot;Third parameter: &quot; + args[2]);
+		log.info(&quot;Third parameter: &quot; + args[3]);*/
+	bankMax = Integer.parseInt(args[0])
+	bankMin = Integer.parseInt(args[1])
+	stopMax = Integer.parseInt(args[2])
+	stopMin = Integer.parseInt(args[3])
+	rand1 = Integer.parseInt(args[4])
+	rand2 = Integer.parseInt(args[5])
+	
+	while(inListStop == 1) {
+		inListStop = 0
+		int rand = java.util.concurrent.ThreadLocalRandom.current().nextInt(1,32000)
+
+//BankRange Min = 400000  Max = 489999
+		//bankBin = rand % (489999 - 400000) + 400000
+		bankBin = rand % (bankMax - bankMin) + bankMin
+
+// stoplist Min = 429999 Max = 430000
+		//if ((bankBin &gt;= 429999) &amp;&amp; (bankBin &lt;= 430000)){
+		if ((bankBin &gt;= stopMin) &amp;&amp; (bankBin &lt;= stopMax)){
+			inListStop = 1
+		}
+	} 
+
+	pan = &apos;&apos; + bankBin + rand1 + rand2 + &apos;0&apos;
+	//pan = &apos;&apos; + bankBin + 1111 + 2222 + &apos;0&apos;
+
+//Считаем контрольную сумму по алгоритму луна:
+	
+//Нечетные цифры номера карты:
+//делается проверка: если 2·x &gt; 9, то из произведения вычитается 9, если 2·x ? 9, то произведение оставляем без изменения.
+// Добавляем это произведение к контрольной сумме.	
+	
+	for (int i=0; i&lt;=14; i+=2)
+	{
+		s = pan.substring(i,i+1)
+		
+		//currSymbol = s.toInteger()
+		currSymbol = Integer.parseInt(s)
+				
+		if ((currSymbol * 2) &gt; 9) {
+			checkSumm+= (currSymbol * 2 - 9)
+		}
+		else {
+			checkSumm+= (currSymbol * 2)
+        	}
+   	}
+
+   	//Четные цифры номера. Просто добавляются к сумме.
+
+   	for (int i=1; i&lt;=13; i+=2)
+	{
+		s = pan.substring(i,i+1)
+		//currSymbol = s.toInteger()
+		currSymbol = Integer.parseInt(s)
+		checkSumm+= currSymbol
+	}
+
+	//из получившейся суммы забираем последнюю цифру.
+	currSymbol = checkSumm % 10
+	checkSumm = 0
+//считаем, сколько нужно добавить к контрольной сумме, чтобы она стала кратной 10.
+	if (currSymbol != 0) {
+		checkSumm = 10 - currSymbol
+	}
+//добавляем полученное значение к номеру карты последним символом
+	pan = pan + checkSumm
+			vars.put(&apos;foo&apos;, pan)
+			log.info(&apos;______________ pan = &apos; + pan)
+		//	log.info(&apos;______________ rand1 = &apos; + rand1)
+		//	log.info(&apos;______________ rand2 = &apos; + rand2)
+
+	
+	
+	</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
